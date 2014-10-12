@@ -8,9 +8,9 @@ Feb07 <- subset(powerdata, Date == "1/2/2007" | Date == "2/2/2007")
 Feb07$DateAndTime <- paste(Feb07$Date, Feb07$Time)
 PowerData <- subset(Feb07, select = 3:10)
 PowerData$DateAndTime <- strptime(PowerData$DateAndTime, "%d/%m/%Y %H:%M:%S")
-## 
+## Open png graphics device
 png(file = "plot2.png", width = 480, height = 480)
-
-ith(PowerData, plot(DateAndTime, Global_active_power, ylab = "Global Active Power (kilowatts)", xlab = "", type = "l"))
+## Plot Global Active power against Time
+with(PowerData, plot(DateAndTime, Global_active_power, ylab = "Global Active Power (kilowatts)", xlab = "", type = "l"))
 
 dev.off()

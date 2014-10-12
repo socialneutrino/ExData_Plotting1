@@ -8,7 +8,7 @@ Feb07$DateAndTime <- paste(Feb07$Date, Feb07$Time)
 PowerData <- subset(Feb07, select = 3:10)
 PowerData$DateAndTime <- strptime(PowerData$DateAndTime, "%d/%m/%Y %H:%M:%S")
 ## Create png file of Global Active Power with histogram
-png(file = "plot1.png", width = 480, height = 480)
+png(file = "plot4.png", width = 480, height = 480)
 
 par(mfrow = c(2, 2))
 
@@ -16,7 +16,9 @@ par(mfrow = c(2, 2))
 with(PowerData, plot(DateAndTime, Global_active_power, ylab = "Global Active Power (kilowatts)", xlab = "", type = "l"))
 
 ##Add 2nd plot
+
 with(PowerData, plot(DateAndTime, Voltage, xlab = "Datetime", type = "l"))
+
 ##Add 3rd plot
 with(PowerData, plot(DateAndTime, Sub_metering_1, type = "n", xlab = "", ylab = "Energy sub metering"))
 
@@ -24,11 +26,10 @@ with(PowerData, plot(DateAndTime, Sub_metering_1, type = "n", xlab = "", ylab = 
 points(PowerData$DateAndTime, PowerData$Sub_metering_1, type = "l", col = "black")
 points(PowerData$DateAndTime, PowerData$Sub_metering_2, type = "l", col = "red")
 points(PowerData$DateAndTime, PowerData$Sub_metering_3, type = "l", col = "blue")
+
 ##Add a legend
-legend("topright", lty = 1, col=c("black", "red","blue"), legend = colnames(PowerData[,5:7]))
+legend("topright", lty = 1, col=c("black", "red","blue"), bty = "n", legend = colnames(PowerData[,5:7]))
 ## Add 4th plot
 with(PowerData, plot(DateAndTime, Global_reactive_power, xlab = "datetime", type = "l"))
-
-
 
 dev.off()
