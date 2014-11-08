@@ -1,4 +1,4 @@
-## Read data from text file
+##Read data from text file
 powerdata <- read.table("./exdata-data-household_power_consumption/household_power_consumption.txt",  header = TRUE, sep = ";", na.strings = "?")
 
 ## Subset data to only dates 1/2/2007 to 2/2/2007
